@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.ActivityNavigator
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.notesapp.R
 import com.example.notesapp.databinding.FragmentCreateNoteBinding
 import com.example.notesapp.domain.model.Note
@@ -19,6 +20,7 @@ class CreateNoteFragment : Fragment() {
 
     private val viewModel by viewModel<CreateNoteViewModel>()
     private lateinit var binding: FragmentCreateNoteBinding
+    val args: CreateNoteFragmentArgs by navArgs()
 
     var id: Int? = null
     override fun onCreateView(
@@ -33,7 +35,7 @@ class CreateNoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.getInt(ID)?.let { viewModel.getNote(it) }
+        if (args.id != -1) { viewModel.getNote(args.id) }
         setEditText()
         setListeners()
     }

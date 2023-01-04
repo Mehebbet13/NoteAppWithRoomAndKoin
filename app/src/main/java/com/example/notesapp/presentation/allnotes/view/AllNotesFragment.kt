@@ -74,10 +74,8 @@ class AllNotesFragment : Fragment() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.setHasFixedSize(true)
         adapter.onItemClick = { id ->
-            findNavController().navigate(
-                R.id.action_allNotesFragment_to_createNoteFragment,
-                bundleOf(ID to id)
-            )
+            val action = AllNotesFragmentDirections.actionAllNotesFragmentToCreateNoteFragment(id)
+            findNavController().navigate(action)
         }
         adapter.onDeleteItemClick = { note ->
             viewModel.deleteNote(note)

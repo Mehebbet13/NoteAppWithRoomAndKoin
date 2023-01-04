@@ -15,10 +15,16 @@
             app:destination="@id/createNoteFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+
     </fragment>
     <fragment
         android:id="@+id/createNoteFragment"
         android:name="com.example.notesapp.presentation.createnote.view.CreateNoteFragment"
         android:label="fragment_create_note"
-        tools:layout="@layout/fragment_create_note" />
+        tools:layout="@layout/fragment_create_note" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="-1"/>
+    </fragment>
 </navigation>
